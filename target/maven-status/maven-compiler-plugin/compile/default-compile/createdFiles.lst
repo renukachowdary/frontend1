@@ -1,0 +1,6 @@
+com\spring\controller\CategoryController.class
+com\spring\controller\productController.class
+com\spring\controller\IndexController.class
+com\spring\controller\SupplierController.class
+com\spring\controller\ImageController.class
+com\spring\controller\HomeController.class
