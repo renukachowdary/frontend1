@@ -31,7 +31,7 @@ import com.spring.daoimpl.UserDAOImpl;
 public class DataBaseConfig {
 	
 	//bean is used
-	@Bean
+	@Bean(name="dataSource")
 	public DataSource getH2DataSource()
 	{
 		
