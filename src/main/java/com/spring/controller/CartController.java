@@ -37,60 +37,59 @@ public class CartController
 				
 				item.setProductQuantity(item.getProductQuantity() + q);
 				
-				Product p = productDao.getProductId(id);
+				Product p = productDao.getProduct(id);
 				
 				System.out.println(item);
-				item.setProductPrice(p.getPrice());
+				item.setPrice(p.getPrice());
 				item.setSubTotal(item.getProductQuantity() *p.getPrice());
 				cartDAO.saveProductToCart(item);
 				attributes.addFlashAttribute("ExistingMessage",  p.getProductName() +"is already exist");
-		
-				return "redirect:/";
+				return "redirect:/cart";
 			} else {
 				Cart item = new Cart();
-				Product p = productDao.getProductId(id);
+				Product p = productDao.getProduct(id);
 				item.setProductId(p.getProductId());
 				item.setProductName(p.getProductName());
 				item.setUserId(userId);
+				item.setPrice(p.getPrice());
 				item.setProductQuantity(q);
 				item.setSubTotal(q * p.getPrice());
-				item.setProductPrice(p.getPrice());
 				cartDAO.saveProductToCart(item);
 				attributes.addFlashAttribute("SuccessMessage", "Item"+p.getProductName()+" has been deleted Successfully");
-				return "redirect:/";
+				return "redirect:/cart";
 			}
 	    	
 	    }
-
-
-	  @RequestMapping("viewcart")
+	   
+	  @RequestMapping("cart")
 		public String viewCart(Model model, HttpSession session) {
 	    	
-			/*//int userId = (Integer) session.getAttribute("userid");*/
-			model.addAttribute("CartList", cartDAO.listCart());
+			int userId = (Integer) session.getAttribute("userid");
+			model.addAttribute("CartList", cartDAO.listCartbyUserId(userId));
 			 if(cartDAO.cartsize((Integer) session.getAttribute("userid"))!=0){
 				
 				model.addAttribute("CartPrice", cartDAO.CartPrice((Integer) session.getAttribute("userid")));
 			} else {
 				model.addAttribute("EmptyCart", "true");
 			}
-			model.addAttribute("IfViewCartClicked", "true");
+			model.addAttribute("IfcartClicked", "true");
 		//	model.addAttribute("HideOthers", "true");
-			return "CartPage";
+			return "Cart";
 		}
-
+	  
 	  @RequestMapping("editCart/{cartid}")
 		public String editorder(@PathVariable("cartid") int cartid, @RequestParam("quantity") int q, HttpSession session) {
 		
 			//int userId = (Integer) session.getAttribute("userid");
 			Cart cart = cartDAO.editCartById(cartid);
-			Product p = productDao. getProductId(cart.productById());
+			
+			Product p = productDao.getProduct(cart.getProductId());
 			cart.setProductQuantity(q);
 			//cart.setProductPrice(q * p.getPrice());
 			cart.setSubTotal(q * p.getPrice());
 			cartDAO.saveProductToCart(cart);
 			session.setAttribute("cartsize", cartDAO.cartsize((Integer) session.getAttribute("userid")));
-			return "redirect:/viewcart";
+			return "redirect:/cart";
 		}
 	    
 	    
@@ -100,18 +99,11 @@ public class CartController
 	public String deleteorder(@PathVariable("id") int id, HttpSession session) {
 		cartDAO.removeCartById(id);
 		session.setAttribute("cartsize", cartDAO.cartsize((Integer) session.getAttribute("userid")));
-		return "redirect:/viewcart";
-	}
-
-
-	@RequestMapping("continue_shopping")
-	public String continueshopping()
-	{
-	return "redirect:/";	
-
+		return "redirect:/cart";
 	}
 
 
 
+	
 
-	}
+}

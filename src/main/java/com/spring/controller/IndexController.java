@@ -28,11 +28,9 @@ ProductDAO productDao;
  @RequestMapping(value="/",method=RequestMethod.GET)
 public String showIndex(Model m)
 {
-m.addAttribute("plist", productDao.retrieveProducts());
+m.addAttribute("plist", productDao.retrieveProduct());
 	return "welcome";
 }
-
-
 @RequestMapping("/registration")
 public String goToRegisterPage(@ModelAttribute("user") User user,Model model)
 {
@@ -40,8 +38,6 @@ public String goToRegisterPage(@ModelAttribute("user") User user,Model model)
 	model.addAttribute("user",new User());
 	
 	return "register";
-
-
 }
 
 @RequestMapping("/saveUser")

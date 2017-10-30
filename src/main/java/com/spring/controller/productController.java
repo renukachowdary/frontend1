@@ -47,7 +47,7 @@ public class productController {
 		m.addAttribute("categoryList",this.getCategories());
 		m.addAttribute("supplierList", this.getSuppliers());
 		
-		List<Product> listProducts=productDao.retrieveProducts();
+		List<Product> listProducts=productDao.retrieveProduct();
 		m.addAttribute("productList",listProducts);
 		
 		return "Product";
@@ -122,7 +122,7 @@ public String addItem(@ModelAttribute("product") Product p,MultipartFile file,Ht
 	    {
 	      
 	        
-	        attributes.addFlashAttribute("product", this.productDao.getProductId(productId));
+	        attributes.addFlashAttribute("product", this.productDao.getProduct(productId));
 	    	return "redirect:/product";
 	    }
 	  

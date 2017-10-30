@@ -89,7 +89,7 @@
                      
                         <td class="col-sm-8 col-md-6">
                         <div class="thumbnail">
-                         <a class="thumbnail pull-left" href="#"> <img src="/NIITFrontend/myImage/imageDisplay?id=${cart.productid}" style="height:50px;height: 50px" > </a>
+                         <a class="thumbnail pull-left" href="#"> <img src="/medicart1/myImage/imageDisplay?id=${cart.productId}" style="height:50px;height: 50px" > </a>
                             <div class="media-body">
                                 <h4 class="media-heading"><a href="#">${cart.productName}</a></h4>
                                 <h5 class="media-heading"> by <a href="#">Brand name</a></h5>
@@ -97,15 +97,15 @@
                             </div>
                         </div></td>
                         <td class="col-sm-1 col-md-1" style="text-align: center">
-                        <form action="editCart/${cart.id}">
+                        <form action="editCart/${cart.cartId}">
                         <input type="text" class="form-control" id="exampleInputEmail1" name="quantity" value="${cart.productQuantity }" >
                         
                         </form>
                         </td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>${cart.productPrice}</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>${cart.price}</strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>${cart.subTotal}</strong></td>
                         <td class="col-sm-1 col-md-1">
-                        <a href="removeCart/${cart.id }" type="button" class="btn btn-danger">
+                        <a href="removeCart/${cart.cartId }" type="button" class="btn btn-danger">
                           <span class="glyphicon glyphicon-remove"></span> Remove
                         </a>
                         
