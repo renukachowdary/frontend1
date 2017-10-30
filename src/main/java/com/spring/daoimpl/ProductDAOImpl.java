@@ -3,9 +3,10 @@ package com.spring.daoimpl;
 import java.util.List;
 
 
-import org.hibernate.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -72,8 +73,8 @@ public class ProductDAOImpl implements ProductDAO
 	    
 	
 	}
-    @Transactional
-	public Product getProduct(int productid) {
+   @Transactional
+	public Product getProductid(int productid) {
 		// TODO Auto-generated method stub
 		String hql = "from"+" Product"+" where id=" + productid;
 		@SuppressWarnings("rawtypes")
@@ -116,7 +117,7 @@ public class ProductDAOImpl implements ProductDAO
 
 
 @Transactional
-public List<Product> retrieveProducts() {
+public List<Product> retrieveProduct() {
 	// TODO Auto-generated method stub
 
 	 Session session=sessionFactory.openSession();
@@ -128,9 +129,50 @@ public List<Product> retrieveProducts() {
        return listProduct;
 	
 }
+
+
+
+
+
+@Transactional
+public Product getProduct(int ProductId) {
+	String hql = "from"+" Product"+" where id=" + ProductId;
+	@SuppressWarnings("rawtypes")
+	Query query = sessionFactory.getCurrentSession().createQuery(hql);
+	
+	@SuppressWarnings("unchecked")
+	List<Product> listProduct = (List<Product>) query.list();
+	
+	if (listProduct != null && !listProduct.isEmpty()) {
+		return listProduct.get(0);
+	}
+	
+
+	return null;
+}
+
+
+
+
+
+/*public Product getProductById(int id) {
+	// TODO Auto-generated method stub
+	String hql = "from"+" Product"+" where id=" + productid;
+	@SuppressWarnings("rawtypes")
+	Query query = sessionFactory.getCurrentSession().createQuery(hql);
+	
+	@SuppressWarnings("unchecked")
+	List<Product> listProduct = (List<Product>) query.list();
+	
+	if (listProduct != null && !listProduct.isEmpty()) {
+		return listProduct.get(0);
+	}
+	
+	return null;*/
 	
 
 	
 	
 	
+
 }

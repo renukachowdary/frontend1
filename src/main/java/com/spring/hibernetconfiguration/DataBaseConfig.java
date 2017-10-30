@@ -15,7 +15,9 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.spring.dao.CartDAO;
 import com.spring.dao.CategoryDAO;
+import com.spring.daoimpl.CartDAOImpl;
 import com.spring.daoimpl.CategoryDAOImpl;
 import com.spring.dao.ProductDAO;
 import com.spring.daoimpl.ProductDAOImpl;
@@ -96,5 +98,19 @@ public SupplierDAO getSupplier(SessionFactory sessionFactory)
 	return new SupplierDAOImpl(sessionFactory);
 	
 }
+
+
+
+@Autowired
+@Bean(name="cartDAO")
+public CartDAO getCart(SessionFactory sessionFactory)
+{
+	return new CartDAOImpl(sessionFactory);
+	
+}
+
+
+
+
 
 }

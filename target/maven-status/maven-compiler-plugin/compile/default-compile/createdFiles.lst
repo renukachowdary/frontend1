@@ -6,9 +6,12 @@ com\spring\dao\UserDAO.class
 com\spring\model\Product.class
 com\spring\daoimpl\UserDAOImpl.class
 niit153\backend\App.class
+com\spring\dao\CartDAO.class
 com\spring\daoimpl\CategoryDAOImpl.class
 com\spring\dao\CategoryDAO.class
 com\spring\model\Supplier.class
+com\spring\model\Cart.class
+com\spring\daoimpl\CartDAOImpl.class
 com\spring\hibernetconfiguration\DataBaseConfig.class
 com\spring\model\User.class
 com\spring\daoimpl\SupplierDAOImpl.class
