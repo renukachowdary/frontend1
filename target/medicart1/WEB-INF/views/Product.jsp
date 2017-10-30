@@ -8,8 +8,16 @@
 <title>product</title>
 </head>
 <body>
-		
-		<form:form action="InsertProduct" modelAttribute="product" enctype="multipart/form-data">
+		<h3>
+		<c:if test="${product.productId==0}">
+		       Add New Item
+	            </c:if>
+			<c:if test="${!empty product.productId}">
+		      Update Product for Id: <c:out value="${product.productId}" />
+				 
+			</c:if>
+			</h3>
+		<form:form action="saveProduct" modelAttribute="product" enctype="multipart/form-data" id="btn-add">
 		<table align="center">
 		
 			<tr>

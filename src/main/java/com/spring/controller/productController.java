@@ -122,7 +122,7 @@ public String addItem(@ModelAttribute("product") Product p,MultipartFile file,Ht
 	    {
 	      
 	        
-	        attributes.addFlashAttribute("product", this.productDao.getProduct(productId));
+	        attributes.addFlashAttribute("product", this.productDao.getProductId(productId));
 	    	return "redirect:/product";
 	    }
 	  
@@ -139,7 +139,7 @@ public String addItem(@ModelAttribute("product") Product p,MultipartFile file,Ht
 
 	
 	
-	
+	/*
 
 	@RequestMapping(value="userHome")
 	public String showProducts(Model m)
@@ -159,7 +159,7 @@ public String addItem(@ModelAttribute("product") Product p,MultipartFile file,Ht
 		Product product=productDao.getProduct(productId);
 		m.addAttribute("product",product);
 		return "ProductDesc";
-	}
+	}*/
 	
 	
 	

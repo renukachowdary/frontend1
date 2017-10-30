@@ -59,7 +59,7 @@
     <div class="container">
         <div class="row product">
             <div class="col-md-5 col-md-offset-0">
-            <img src="/medicart1/myImage/imageDisplay?id=${product.productId}" alt="" width="300" height="200" /></div>
+            <img src="/medicart1/myImage/imageDisplay?id=${product.productId}" alt="" width="75" height="50" /></div>
             <div class="col-md-7">
                 <div class="table-responsive">
                     <table class="table">
