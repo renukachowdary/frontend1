@@ -29,7 +29,6 @@ import com.spring.daoimpl.UserDAOImpl;
 @Configuration
 @ComponentScan("com.spring")
 @EnableTransactionManagement
-@Component
 public class DataBaseConfig {
 	
 	//bean is used
@@ -42,6 +41,7 @@ public class DataBaseConfig {
 		dataSource.setUrl("jdbc:h2:tcp://localhost/~/re");
 		dataSource.setUsername("sa");
 		dataSource.setPassword("aa");
+		System.out.println("DataSource");
 		return dataSource;
   	}
 	
@@ -96,9 +96,7 @@ public CategoryDAO getCategory(SessionFactory sessionFactory)
 public SupplierDAO getSupplier(SessionFactory sessionFactory)
 {
 	return new SupplierDAOImpl(sessionFactory);
-	
 }
-
 
 
 @Autowired

@@ -1,6 +1,5 @@
 package com.spring.daoimpl;
 
-import java.util.Collection;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -11,10 +10,14 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Repository;
 
 import com.spring.dao.CartDAO;
 import com.spring.model.Cart;
 
+
+@Repository("cartDAO")
 public class CartDAOImpl implements CartDAO
 {
 
