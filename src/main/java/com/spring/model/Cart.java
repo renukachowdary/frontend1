@@ -1,106 +1,115 @@
 package com.spring.model;
 
+import java.io.Serializable;
+import java.sql.Timestamp;
+
 import javax.persistence.*;
 
 
 @Entity
-public class Cart 
+public class Cart implements Serializable
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 
 	
 	@GeneratedValue
 	@Id
-	private int cartId;
-	private int productId,userId,price,productQuantity;
-	private String ProductName;
+	int cartId;
+	private int productId;
+	private int userId;
 	private double subTotal;
-	/**
-	 * @return the cartId
-	 */
+	private int price;
+	private int productQuantity;
+	
+	private Timestamp createdTimestamp;
+	
+	private String createdBy;
+	
+	private Timestamp updatedTimestamp;
+	
+	private String updatedBy;
+	
+	
 	public int getCartId() {
 		return cartId;
 	}
-	/**
-	 * @param cartId the cartId to set
-	 */
 	public void setCartId(int cartId) {
 		this.cartId = cartId;
 	}
-	/**
-	 * @return the productId
-	 */
 	public int getProductId() {
 		return productId;
 	}
-	/**
-	 * @param productId the productId to set
-	 */
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
-	/**
-	 * @return the userId
-	 */
 	public int getUserId() {
 		return userId;
 	}
-	/**
-	 * @param userId the userId to set
-	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	/**
-	 * @return the price
-	 */
-	public int getPrice() {
-		return price;
-	}
-	/**
-	 * @param price the price to set
-	 */
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	/**
-	 * @return the productQuantity
-	 */
-	public int getProductQuantity() {
-		return productQuantity;
-	}
-	/**
-	 * @param productQuantity the productQuantity to set
-	 */
-	public void setProductQuantity(int productQuantity) {
-		this.productQuantity = productQuantity;
-	}
-	/**
-	 * @return the productName
-	 */
-	public String getProductName() {
-		return ProductName;
-	}
-	/**
-	 * @param productName the productName to set
-	 */
-	public void setProductName(String productName) {
-		ProductName = productName;
-	}
-	/**
-	 * @return the subTotal
-	 */
+	
+	
+	
 	public double getSubTotal() {
 		return subTotal;
 	}
-	/**
-	 * @param subTotal the subTotal to set
-	 */
 	public void setSubTotal(double subTotal) {
 		this.subTotal = subTotal;
 	}
-	
-	
-	
-	
-	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getProductQuantity() {
+		return productQuantity;
+	}
+	public void setProductQuantity(int productQuantity) {
+		this.productQuantity = productQuantity;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	String productName;
+
+
+	public Timestamp getCreatedTimestamp() {
+		return createdTimestamp;
+	}
+	public void setCreatedTimestamp(Timestamp createdTimestamp) {
+		this.createdTimestamp = createdTimestamp;
+	}
+	public String getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+	public Timestamp getUpdatedTimestamp() {
+		return updatedTimestamp;
+	}
+	public void setUpdatedTimestamp(Timestamp updatedTimestamp) {
+		this.updatedTimestamp = updatedTimestamp;
+	}
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+		
 }

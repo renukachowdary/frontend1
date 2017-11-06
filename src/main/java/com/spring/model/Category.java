@@ -1,14 +1,22 @@
 package com.spring.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
  
 @Entity
 @Table
 public class Category 
 {
     @Id
+    @GeneratedValue
     int catId;
-    String catName,catDesc;
+    @NotNull
+    @Size(min=7,max=17)
+    private String catName;
+    @NotNull
+    @Size(min=12,max=40)
+    String catDesc;
     public int getCatId() {
 		return catId;
 	}

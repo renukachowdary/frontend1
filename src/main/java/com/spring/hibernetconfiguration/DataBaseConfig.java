@@ -12,15 +12,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
-import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.spring.dao.AddressDAO;
 import com.spring.dao.CartDAO;
 import com.spring.dao.CategoryDAO;
+import com.spring.daoimpl.AddressDAOImpl;
 import com.spring.daoimpl.CartDAOImpl;
 import com.spring.daoimpl.CategoryDAOImpl;
-import com.spring.dao.ProductDAO;
-import com.spring.daoimpl.ProductDAOImpl;
 import com.spring.dao.SupplierDAO;
 import com.spring.daoimpl.SupplierDAOImpl;
 import com.spring.dao.UserDAO;
@@ -107,8 +106,14 @@ public CartDAO getCart(SessionFactory sessionFactory)
 	
 }
 
+@Autowired
+@Bean(name = "addressDAO")
+public AddressDAO getAddressDAO(SessionFactory sessionFactory)
+{
+
+	return new AddressDAOImpl(sessionFactory);
 
 
 
-
+}
 }

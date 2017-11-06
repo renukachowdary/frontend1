@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.dao.SupplierDAO;
-import com.spring.model.Category;
 import com.spring.model.Supplier;
 
 @SuppressWarnings("deprecation")

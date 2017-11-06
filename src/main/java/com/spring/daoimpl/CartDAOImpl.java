@@ -111,10 +111,15 @@ public Cart getCartById(int cart_id) {
 	return null;
 }
 
-
+@Transactional
 public double CartPrice(int userId) {
-	// TODO Auto-generated method stub
-	return 0;
+	@SuppressWarnings("deprecation")
+	Criteria c=sessionFactory.getCurrentSession().createCriteria(Cart.class);
+	c.add(Restrictions.eq("userId", userId));
+	//c.add(Restrictions.eq("status","C"));
+	c.setProjection(Projections.sum("subTotal"));
+	double l=  (Double) c.uniqueResult();
+	return l;
 }
 
 
@@ -126,7 +131,7 @@ public List<Cart> getCart(int userid) {
 @SuppressWarnings("unchecked")
 @Transactional
 public List<Cart> listCartbyUserId(int userId) {
-	String hql = "from"+" Cart"+" where userId=" + userId;
+	String hql = "from Cart where userId = " + userId;
 
 	List<Cart> lCart = sessionFactory.getCurrentSession().createQuery(hql).list();
 	return lCart;
